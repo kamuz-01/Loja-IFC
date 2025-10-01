@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Bem-vindo"{% endblock %}
+{% block content %}
+<div style="max-width:500px; margin: 40px auto; text-align:center;">
+    <div>
+        <h1>Bem-vindo, {{ novo_usuario.first_name }}</h1>
+        <p>Sua conta foi criada com sucesso!</p>
+        <a href="{% url 'login' %}">Fazer login</a>
+    </div>
+</div>
+{% endblock %}

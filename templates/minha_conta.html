@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title  %}Minha conta{% endblock  %}
+
+{% block content %}
+    <div>
+        <div>
+            <h1>Minha conta</h1>
+            <p> Olá, <strong>{{ user.first_name|default:user.username }}</strong>
+                Aqui estão suas informações
+            </p>
+            <hr>
+            <p><strong>Nome do usuário: </strong>{{ user.username }}</p>
+            <p><strong>Email: </strong>{{ user.email }}</p>
+            <hr>
+            <div>
+                <a href="{% url 'password_change' %}">Alterar senha</a>
+                <a href="{% url 'excluir_conta' %}">Excluir conta</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

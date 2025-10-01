@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-center" style="margin-bottom: 30px;">Django</h1>
+<div class="card">
+    <div class="card-body">
+        <form>
+            <div class="col-md-5">
+                <label class="form-label">Nome do produto</label>
+                {{ filter.form.nome }}
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Faixa de preço</label>
+                {{ filter.form.preco }}
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Disponibilidade</label>
+                {{ filter.form.disponivel }}
+            </div>
+            <div class="col-md-1">
+                <buttom type="submit" class="btn">Filtrar</buttom>
+            </div>
+        </form>
+    </div>
+</div>
+<h2 style="margin-top:40px;">Resultados</h2>
+{% if filter.qs %}
+<div class="produtc-grid">
+    {% for produto in filter.qs %}
+    <div class="col-md-4">
+        {% include 'partials/_card_produto.html' %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info" style="margin-top: 20px;">
+    Nenhum produto encontrado com os filtros aplicados
+</div>
+{% endif %}
+{% endblock %} %}
