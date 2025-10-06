@@ -2,56 +2,104 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Minha Loja</title>
-    <link rel="stylesheet" href="{% static 'loja/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Seus estilos customizados -->
+    <link rel="stylesheet" href="{% static 'loja/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+
+    <style>
+        /* Garantir que o body ocupe a altura total da tela para sticky footer */
+        html, body {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1 0 auto; /* Faz o main crescer e empurrar o footer para baixo */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        footer {
+            flex-shrink: 0;
+            background-color: #343a40; /* fundo escuro */
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'lista_produtos' %}">Loja</a>
-            <div class="menu">
-                <a href="{% url 'lista_produtos' %}">Produtos</a>
-                <a href="{% url 'produtos_filtrados' %}">Pesquisar</a>
-                <a href="#">Sobre</a>
-                <a href="#">Contato</a>
+            <a class="navbar-brand fw-bold text-primary" href="{% url 'lista_produtos' %}">Loja</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" 
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                {% if user.is_authenticated %}
-                    <a href="{% url 'ver_carrinho' %}">Carrinho ({{ carrinho|length }})</a>
-                    <div class="user-menu">
-                        <button>
-                            Olá, {{ user.first_name|default:user.username }}
-                        </button>
-                        <div class="dropdown">
-                            <form action="{% url 'minha_conta' %}" method="get">
-                                <button type="submit">Minha conta</button>
-                            </form>
-                            <hr>
-                            <form action="{% url 'logout' %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit">Sair</button>
-                            </form>
-                        </div>
-                    </div>
-                {% else %}
-                    <a href="{% url 'login' %}">Login</a>
-                    <a href="{% url 'registrar' %}">Registrar</a>
-                {% endif %}
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'lista_produtos' %}">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'produtos_filtrados' %}">Pesquisar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="{% url 'ver_carrinho' %}">
+                                Carrinho
+                                <span class="badge bg-primary rounded-pill ms-1">{{ carrinho|length }}</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="userDropdown" 
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Olá, {{ user.first_name|default:user.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="{% url 'minha_conta' %}">Minha conta</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{% url 'logout' %}" method="post" class="px-3 py-1">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-link text-danger p-0">Sair</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registrar' %}">Registrar</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </nav>
 
-    <main>
+    <main class="container">
         {% if messages %}
             <div>
-                {% for messages in messages %}
-                    <div>
-                        {{ messages }}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">
+                        {{ message }}
                     </div>
                 {% endfor %}
             </div>
@@ -61,9 +109,13 @@
         {% endblock %}
     </main>
 
-    <footer class="footer">
-        <p>Loja</p>
+    <footer class="py-3 text-center">
+        <div class="container">
+            <p class="mb-0">&copy; {{ now|date:"Y" }} Loja. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
