@@ -70,3 +70,9 @@ def checkout(request):
         
     carrinho.limpar()
     return render(request, 'checkout_concluido.html')
+
+def sobre(request):
+    return render(request, 'sobre.html')
+
+def contato(request):
+    return render(request, 'contato.html')

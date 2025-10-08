@@ -1,41 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container py-4">
+    <h1 class="text-center mb-4 text-primary">Django</h1>
 
-<h1 class="text-center" style="margin-bottom: 30px;">Django</h1>
-<div class="card">
-    <div class="card-body">
-        <form>
-            <div class="col-md-5">
-                <label class="form-label">Nome do produto</label>
-                {{ filter.form.nome }}
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Faixa de preço</label>
-                {{ filter.form.preco }}
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">Disponibilidade</label>
-                {{ filter.form.disponivel }}
-            </div>
-            <div class="col-md-1">
-                <buttom type="submit" class="btn">Filtrar</buttom>
-            </div>
-        </form>
+    <!-- Card do Filtro -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <form method="get" class="d-flex flex-wrap align-items-center gap-3">
+                <div style="flex: 1 1 250px;">
+                  <label class="form-label">Nome do produto</label>
+                  {{ filter.form.nome }}
+                </div>
+              
+                <div style="flex: 0 0 130px;">
+                  <label class="form-label">Faixa de preço</label>
+                  {{ filter.form.preco }}
+                </div>
+              
+                <div style="flex: 0 0 130px;">
+                  <label class="form-label">Disponibilidade</label>
+                  {{ filter.form.disponivel }}
+                </div>
+              
+                <div style="flex: 0 0 auto; display: flex; align-items: center;">
+                  <button type="submit" class="btn btn-primary">Filtrar</button>
+                </div>
+              </form>                    
+        </div>
     </div>
-</div>
-<h2 style="margin-top:40px;">Resultados</h2>
-{% if filter.qs %}
-<div class="produtc-grid">
-    {% for produto in filter.qs %}
-    <div class="col-md-4">
-        {% include 'partials/_card_produto.html' %}
+
+    <!-- Resultados -->
+    <h2 class="mb-4">Resultados</h2>
+
+    {% if filter.qs %}
+    <div class="row g-4">
+        {% for produto in filter.qs %}
+        <div class="col-12 col-md-6 col-lg-4">
+            {% include 'partials/_card_produto.html' %}
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    {% else %}
+    <div class="alert alert-info mt-3">
+        Nenhum produto encontrado com os filtros aplicados.
+    </div>
+    {% endif %}
 </div>
-{% else %}
-<div class="alert alert-info" style="margin-top: 20px;">
-    Nenhum produto encontrado com os filtros aplicados
-</div>
-{% endif %}
-{% endblock %} %}
+{% endblock %}

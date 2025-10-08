@@ -15,31 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Seus estilos customizados -->
-    <link rel="stylesheet" href="{% static 'loja/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
-
-    <style>
-        /* Garantir que o body ocupe a altura total da tela para sticky footer */
-        html, body {
-            height: 100%;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        main {
-            flex: 1 0 auto; /* Faz o main crescer e empurrar o footer para baixo */
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        footer {
-            flex-shrink: 0;
-            background-color: #343a40; /* fundo escuro */
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/estilos_base.css' %}" />
 </head>
 <body>
 
@@ -56,8 +32,8 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{% url 'lista_produtos' %}">Produtos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'produtos_filtrados' %}">Pesquisar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sobre' %}">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contato' %}">Contato</a></li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">

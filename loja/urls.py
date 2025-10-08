@@ -9,6 +9,7 @@ from .views import (
     ver_carrinho,
     checkout,
     )
+from . import views
 
 urlpatterns = [
     path('', ListaProdutosView.as_view(), name='lista_produtos'),
@@ -18,4 +19,6 @@ urlpatterns = [
     path('remover/<int:produto_id>/', remover_do_carrinho, name='remover_do_carrinho'),
     path('ver_carrinho/', ver_carrinho, name='ver_carrinho'),
     path('carrinho/checkout/', checkout, name='checkout'),
+    path('sobre/', views.sobre, name='sobre'),
+    path('contato/', views.contato, name='contato'),
 ]

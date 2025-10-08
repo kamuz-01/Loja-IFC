@@ -28,7 +28,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['nome_cadastro_anywhere.pythonanywhere.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'conta',
     'carrinho',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
