@@ -1,120 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Detalhes do produto: {{ produto.nome }}{% endblock %}
 
 {% block content %}
-<style>
-  .produto-card {
-    max-width: 400px;
-    margin: 40px auto;
-    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #fff;
-  }
 
-  .produto-card .card-body {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 20px 30px;
-  }
-
-  .produto-imagem {
-    flex: 1 1 400px;
-    max-width: 400px;
-    text-align: center;
-  }
-
-  .produto-imagem img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: contain;
-  }
-
-  .produto-detalhes {
-    flex: 1 1 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .produto-detalhes h2 {
-    margin-bottom: 15px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #333;
-  }
-
-  .produto-detalhes p.preco {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #007bff;
-    margin-bottom: 15px;
-  }
-
-  .produto-detalhes p.status strong {
-    font-weight: 600;
-  }
-
-  .produto-detalhes p.status span {
-    font-weight: 600;
-    color: #28a745;
-  }
-
-  .produto-detalhes p.status span.indisponivel {
-    color: #dc3545;
-  }
-
-  .produto-actions {
-    margin-top: 25px;
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .produto-actions button {
-    padding: 12px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: white;
-  }
-
-  .btn-adicionar {
-    background-color: #007bff;
-  }
-  .btn-adicionar:hover {
-    background-color: #0056b3;
-  }
-
-  .btn-esgotado {
-    background-color: #6c757d;
-    cursor: not-allowed;
-  }
-
-  .btn-voltar {
-    background-color: #17a2b8;
-  }
-  .btn-voltar:hover {
-    background-color: #117a8b;
-  }
-
-  @media (max-width: 768px) {
-    .produto-card .card-body {
-      flex-direction: column;
-      padding: 15px 20px;
-    }
-
-    .produto-imagem, .produto-detalhes {
-      max-width: 100%;
-      flex: 1 1 100%;
-    }
-  }
-</style>
+<link rel="stylesheet" href="{% static 'css/produto-detail.css' %}">
 
 <div class="produto-card card">
   <div class="card-body">

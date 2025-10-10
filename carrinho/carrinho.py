@@ -30,6 +30,15 @@ class Carrinho:
         if produto_id in self.carrinho:
             del self.carrinho[produto_id]
             self.salvar()
+    
+    def remover_uma_unidade(self, produto):
+        produto_id = str(produto.id)
+        if produto_id in self.carrinho:
+            if self.carrinho[produto_id]['quantidade'] > 1:
+                self.carrinho[produto_id]['quantidade'] -= 1
+            else:
+                del self.carrinho[produto_id]
+            self.salvar()
             
     def __iter__(self):
         produto_ids = self.carrinho.keys()

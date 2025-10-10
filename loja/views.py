@@ -42,6 +42,14 @@ def adicionar_ao_carrinho(request, produto_id):
     return redirect('ver_carrinho')
 
 @login_required
+def remover_uma_unidade(request, produto_id):
+    carrinho = Carrinho(request)
+    produto = get_object_or_404(Produto, id=produto_id)
+
+    carrinho.remover_uma_unidade(produto)
+    return redirect('ver_carrinho')
+
+@login_required
 def ver_carrinho(request):
     carrinho = Carrinho(request)
     return render(request, 'carrinho.html', {'carrinho': carrinho})

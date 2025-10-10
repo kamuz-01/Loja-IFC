@@ -1,31 +1,53 @@
 {% extends "base.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="card" style="max-width: 500px; margin: auto;">
-    <div class="card-body">
-        <h2 class="card-title">Login</h2>
-        <p>Preencha com seu usuário e senha para logar</p>
-        <br>
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 450px;">
+        <div class="card-body">
+            <h2 class="card-title text-center">Login</h2>
+            <p class="text-center text-muted">Preencha com seu usuário e senha para logar</p>
+            <hr>
 
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <div>
-                <label>Usuário</label>
-                {{ form.username }}
-            </div>
-            <div>
-                <label>Senha</label>
-                {{ form.password }}
-            </div>
-            {% if form.errors %}
-            <div>
-                <p>Seu usuario e senha não correspondem</p>
-            </div>
-            {% endif %}
-            <button type="submit">Entrar</button>
-        </form>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <!-- Usuário -->
+                <div class="mb-3">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">Usuário</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        {{ form.username|add_class:"form-control"|attr:"placeholder:Digite seu usuário" }}
+                    </div>
+                </div>
+
+                <!-- Senha -->
+                <div class="mb-3">
+                    <label for="{{ form.password.id_for_label }}" class="form-label">Senha</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        {{ form.password|add_class:"form-control"|attr:"placeholder:Digite sua senha" }}
+                    </div>
+                </div>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        Usuário e/ou senha incorretos.
+                    </div>
+                {% endif %}
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

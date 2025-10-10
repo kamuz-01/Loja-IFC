@@ -1,99 +1,12 @@
 {% extends "base.html" %}
 
+{% load static %} 
+
 {% block title %}Confirmar exclusão da conta{% endblock %}
 
 {% block content %}
-<style>
-  .excluir-container {
-    max-width: 550px;
-    margin: 100px auto;
-    background: #fff;
-    padding: 40px 35px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
-  }
 
-  .excluir-container h1 {
-    color: #dc3545; /* vermelho Bootstrap */
-    font-size: 1.9rem;
-    margin-bottom: 15px;
-  }
-
-  .excluir-container p {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-
-  .excluir-container p strong {
-    color: #b02a37;
-  }
-
-  .excluir-container form {
-    margin-top: 25px;
-  }
-
-  .excluir-container .botoes {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .excluir-container a,
-  .excluir-container button {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .excluir-container a {
-    background-color: #6c757d;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .excluir-container a:hover {
-    background-color: #565e64;
-  }
-
-  .excluir-container button {
-    background-color: #dc3545;
-    color: #fff;
-  }
-
-  .excluir-container button:hover {
-    background-color: #b02a37;
-  }
-
-  .icone-alerta {
-    font-size: 3rem;
-    color: #dc3545;
-    margin-bottom: 10px;
-  }
-
-  @media (max-width: 500px) {
-    .excluir-container {
-      margin: 60px 15px;
-      padding: 30px 20px;
-    }
-
-    .excluir-container .botoes {
-      flex-direction: column;
-    }
-
-    .excluir-container a,
-    .excluir-container button {
-      width: 100%;
-    }
-  }
-</style>
+<link rel="stylesheet" href="{% static 'css/excluir-confirm.css' %}">
 
 <div class="excluir-container">
   <div class="icone-alerta">⚠️</div>

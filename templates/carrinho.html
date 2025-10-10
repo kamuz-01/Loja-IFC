@@ -3,60 +3,71 @@
 {% block title %}Carrinho de compras{% endblock %}
 
 {% block content %}
-  <h1 style="margin-bottom: 30px; text-align: center;">Carrinho de Compras</h1>
+  <h1 class="text-center mb-4">Carrinho de Compras</h1>
 
   {% if carrinho|length > 0 %}
-    <div style="overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-        <thead>
-          <tr style="background-color: #f8f9fa;">
-            <th style="padding: 12px; border: 1px solid #dee2e6;">Produto</th>
-            <th style="padding: 12px; border: 1px solid #dee2e6;">Quantidade</th>
-            <th style="padding: 12px; border: 1px solid #dee2e6;">Preço unitário</th>
-            <th style="padding: 12px; border: 1px solid #dee2e6;">Preço total</th>
-            <th style="padding: 12px; border: 1px solid #dee2e6;">Ação</th>
+    <div class="table-responsive mb-4">
+      <table class="table table-bordered table-striped align-middle text-center">
+        <thead class="table-success">
+          <tr>
+            <th>Produto</th>
+            <th style="width: 160px;">Quantidade</th>
+            <th>Preço unitário</th>
+            <th>Preço total</th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody>
           {% for item in carrinho %}
             {% with produto=item.produto %}
-              <tr style="background-color:rgb(227, 248, 215);">
-                <td style="padding: 12px; border: 1px solid #dee2e6;">{{ produto.nome }}</td>
-                <td style="padding: 12px; border: 1px solid #dee2e6; text-align: center;">{{ item.quantidade }}</td>
-                <td style="padding: 12px; border: 1px solid #dee2e6; text-align: right;">R$ {{ item.preco }}</td>
-                <td style="padding: 12px; border: 1px solid #dee2e6; text-align: right;">R$ {{ item.preco_total }}</td>
-                <td style="padding: 12px; border: 1px solid #dee2e6; text-align: center;">
-                  <a href="{% url 'remover_do_carrinho' produto.id %}" 
-                     style="color: #dc3545; text-decoration: none; font-weight: bold;">Remover</a>
+              <tr>
+                <td>{{ produto.nome }}</td>
+                
+                <td>
+                  <div class="d-flex justify-content-center align-items-center gap-2">
+                    <!-- Botão - -->
+                    <a href="{% url 'remover_uma_unidade' produto.id %}" class="btn btn-outline-danger btn-sm" title="Remover">
+                      <i class="fas fa-minus"></i>
+                    </a>
+                    <span class="fw-bold">{{ item.quantidade }}</span>
+                    <!-- Botão + -->
+                    <a href="{% url 'adicionar_ao_carrinho' produto.id %}" class="btn btn-outline-success btn-sm" title="Adicionar">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </div>
+                </td>
+
+                <td>R$ {{ item.preco }}</td>
+                <td>R$ {{ item.preco_total }}</td>
+                <td>
+                  <a href="{% url 'remover_do_carrinho' produto.id %}" class="btn btn-danger btn-sm">
+                    Remover tudo
+                  </a>
                 </td>
               </tr>
             {% endwith %}
           {% endfor %}
-          <tr style="font-weight: bold; background-color: #f1f3f5;">
-            <td colspan="3" style="padding: 12px; border: 1px solid #dee2e6; text-align: right;">Total:</td>
-            <td style="padding: 12px; border: 1px solid #dee2e6; text-align: right;">R$ {{ carrinho.get_total_preco }}</td>
-            <td style="border: 1px solid #dee2e6;"></td>
+
+          <tr class="fw-bold table-secondary">
+            <td colspan="3" class="text-end">Total:</td>
+            <td>R$ {{ carrinho.get_total_preco }}</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 40px;">
-      <a href="{% url 'lista_produtos' %}" 
-         style="padding: 10px 20px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px;">
-         Continuar comprando
-      </a>
-      <a href="{% url 'checkout' %}" 
-         style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
-         Finalizar compra
-      </a>
+    <div class="d-flex justify-content-center gap-3 mb-5">
+      <a href="{% url 'lista_produtos' %}" class="btn btn-secondary">Continuar comprando</a>
+      <a href="{% url 'checkout' %}" class="btn btn-primary">Finalizar compra</a>
     </div>
 
   {% else %}
-    <div style="text-align: center; font-size: 1.2rem; color: #6c757d;">
+    <div class="text-center text-muted fs-5">
       <p>Seu carrinho está vazio!</p>
-      <a href="{% url 'lista_produtos' %}" 
-         style="color: #007bff; text-decoration: none; font-weight: 600;">Voltar à lista de produtos</a>
+      <a href="{% url 'lista_produtos' %}" class="fw-bold text-primary text-decoration-none">
+        Voltar à lista de produtos
+      </a>
     </div>
   {% endif %}
 {% endblock %}

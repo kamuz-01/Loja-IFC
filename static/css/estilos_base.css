@@ -1,173 +1,177 @@
-body{
-    background-color: rgb(214, 214, 252);
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+@charset "UTF-8";
+
+body {
+  background-color: rgba(214, 214, 252, 0.737);
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Garantir que o body ocupe a altura total da tela para sticky footer */
-html, body {
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
+html,
+body {
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
 }
 
 .card {
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card-img-top {
-    height: 220px;
-    object-fit: cover;
+  height: 220px;
+  object-fit: cover;
 }
 
 .card-title {
-    font-weight: 600;
-    color: #333;
+  font-weight: 600;
+  color: #333;
 }
 
 .card-text {
-    font-size: 0.9rem;
-    color: #666;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-form select, 
-form input, 
+form select,
+form input,
 form .form-control {
-    border-radius: 8px;
-    border: 1px solid #ced4da;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
 }
 
 form label {
-    color: #333;
+  color: #333;
 }
 
 form.d-flex > div {
-    display: flex;
-    flex-direction: row;  /* label e input lado a lado */
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: row; /* label e input lado a lado */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form.d-flex > div > label {
+  min-width: 100px; /* largura mínima do label, ajustável */
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+form.d-flex > div > *:not(label) {
+  flex: 1 1 auto; /* input ocupa o espaço restante */
+}
+
+#id_nome {
+  width: 15px !important;
+}
+
+#id_preco_0,
+#id_preco_1 {
+  width: 70px;
+}
+
+.bg-success {
+  height: 30px;
+}
+
+main {
+  flex: 1 0 auto; /* Faz o main crescer e empurrar o footer para baixo */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+footer {
+  flex-shrink: 0;
+  background-color: #343a40; /* fundo escuro */
+  color: white;
+  padding: 1rem 0;
+}
+
+/* Navbar */
+.navbar {
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+}
+
+.navbar .navbar-brand {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+.navbar-toggler-icon {
+  background-color: #007bff;
+}
+
+/* Navbar para mobile */
+@media (max-width: 991px) {
+  .navbar .navbar-nav {
+    text-align: center;
+  }
+}
+
+/* Botões de login/registro */
+.navbar-nav .nav-item a {
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ff5722;
+}
+
+/* Melhorias no conteúdo principal */
+.container {
+  max-width: 1140px;
+}
+
+/* Estilos do rodapé */
+footer p {
+  font-size: 0.875rem;
+}
+
+/* Alerta de mensagens */
+.alert-info {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+/* Ajustes para dispositivos pequenos */
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.25rem;
   }
 
-  form.d-flex > div > label {
-    min-width: 100px;  /* largura mínima do label, ajustável */
-    white-space: nowrap;
-    font-weight: 600;
+  .navbar-nav .nav-link {
+    font-size: 0.875rem;
   }
 
-  form.d-flex > div > *:not(label) {
-    flex: 1 1 auto;  /* input ocupa o espaço restante */
+  footer p {
+    font-size: 0.75rem;
   }
-
-  #id_nome{
-    width: 15px !important;
-  }
-  
-  #id_preco_0, #id_preco_1{
-    width: 70px;
-  }
-
-  .bg-success {
-    height: 30px;
-  }  
-
-        main {
-            flex: 1 0 auto; /* Faz o main crescer e empurrar o footer para baixo */
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        footer {
-            flex-shrink: 0;
-            background-color: #343a40; /* fundo escuro */
-            color: white;
-            padding: 1rem 0;
-        }
-
-        /* Navbar */
-        .navbar {
-            padding: 1rem 2rem;
-            background-color: #ffffff;
-        }
-
-        .navbar .navbar-brand {
-            font-weight: bold;
-            color: #007bff;
-            font-size: 1.5rem;
-        }
-
-        .navbar-nav .nav-link {
-            color: #555;
-            transition: color 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #007bff;
-        }
-
-        .navbar-toggler-icon {
-            background-color: #007bff;
-        }
-
-        /* Navbar para mobile */
-        @media (max-width: 991px) {
-            .navbar .navbar-nav {
-                text-align: center;
-            }
-        }
-
-        /* Botões de login/registro */
-        .navbar-nav .nav-item a {
-            font-weight: 500;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #ff5722;
-        }
-
-        /* Melhorias no conteúdo principal */
-        .container {
-            max-width: 1140px;
-        }
-
-        /* Estilos do rodapé */
-        footer p {
-            font-size: 0.875rem;
-        }
-
-        /* Alerta de mensagens */
-        .alert-info {
-            background-color: #d1ecf1;
-            border-color: #bee5eb;
-        }
-
-        /* Ajustes para dispositivos pequenos */
-        @media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1.25rem;
-            }
-
-            .navbar-nav .nav-link {
-                font-size: 0.875rem;
-            }
-
-            footer p {
-                font-size: 0.75rem;
-            }
-        }
+}
