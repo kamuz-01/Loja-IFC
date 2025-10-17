@@ -317,6 +317,7 @@ Para dúvidas ou sugestões sobre o projeto, entre em contato através do formul
 
 ---
 
-*Desenvolvido com ❤️ para a comunidade de desenvolvimento do IFC - Fraiburgo*
-
-**Todos os direitos reservados © 2025**
+<p align="center">
+  <strong><em>Desenvolvido com ❤️ para a comunidade de desenvolvimento do IFC - Fraiburgo</em></strong><br>
+  <strong><em>Todos os direitos reservados © 2025</em></strong>
+</p>
