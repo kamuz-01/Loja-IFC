@@ -305,7 +305,7 @@ Este projeto está licenciado sob a **MIT License**. Veja o arquivo [LICENSE](LI
 
 ## 👤 Desenvolvedor
 
-**Karli De Jesus Munoz Manzano**
+** 🧑🏽‍💻 Karli De Jesus Munoz Manzano**
 
 📧 **Email**: karli.manzano@estudantes.ifc.edu.br
 
