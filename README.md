@@ -105,17 +105,17 @@ Acesse a aplicação em `http://localhost:8000` 🎉
 
 ```
 Loja-IFC/
-├── manage.py                      # Gerenciador de comandos Django
-├── requirements.txt               # Dependências do projeto
-├── db.sqlite3                     # Banco de dados (desenvolvimento)
+├── manage.py                     # Gerenciador de comandos Django
+├── requirements.txt              # Dependências do projeto
+├── db.sqlite3                    # Banco de dados (desenvolvimento)
 │
-├── core/                          # Configurações principais do projeto
+├── core/                         # Configurações principais do projeto
 │   ├── settings.py               # Configurações do Django
 │   ├── urls.py                   # URLs principais
 │   ├── wsgi.py                   # Aplicação WSGI
 │   └── asgi.py                   # Aplicação ASGI
 │
-├── loja/                          # App principal - Produtos
+├── loja/                         # App principal - Produtos
 │   ├── models.py                 # Modelo Produto
 │   ├── views.py                  # Views (CBV e FBV)
 │   ├── urls.py                   # URLs da app loja
@@ -123,18 +123,18 @@ Loja-IFC/
 │   ├── admin.py                  # Admin do Django
 │   └── migrations/               # Migrações do banco
 │
-├── carrinho/                      # App - Carrinho de Compras
+├── carrinho/                     # App - Carrinho de Compras
 │   ├── carrinho.py               # Lógica do carrinho (session)
 │   ├── context_processor.py      # Processador de contexto
 │   └── migrations/
 │
-├── conta/                         # App - Autenticação e Conta
+├── conta/                        # App - Autenticação e Conta
 │   ├── forms.py                  # Formulário de registro
 │   ├── views.py                  # Login, registro, exclusão
 │   ├── urls.py                   # URLs da autenticação
 │   └── migrations/
 │
-├── static/                        # Arquivos estáticos
+├── static/                       # Arquivos estáticos
 │   └── css/                      # Estilos customizados
 │       ├── estilos_base.css
 │       ├── contato.css
@@ -145,10 +145,10 @@ Loja-IFC/
 │       ├── produto-detail.css
 │       └── sobre.css
 │
-├── media/                         # Uploads de usuários
+├── media/                        # Uploads de usuários
 │   └── produtos/                 # Imagens de produtos
 │
-└── templates/                     # Templates HTML
+└── templates/                    # Templates HTML
     ├── base.html                 # Template base
     ├── lista_produtos.html
     ├── produto_detail.html
